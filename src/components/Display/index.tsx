@@ -5,21 +5,27 @@ import { useEffect, useState } from "react"
 // COMPONENTS
 import Number from "./Number"
 
-export default function Display() {
-  const [time, setTime] = useState(15 * 60 * 1000)
-  const [start, setStart] = useState(false)
+interface DisplayProps {
+  start: boolean
+}
+
+export default function Display(props: DisplayProps) {
+  const [time, setTime] = useState(0.1 * 60 * 1000)
 
   const minutes = Math.floor(time / (60 * 1000))
   const seconds = Math.floor((time % (60 * 1000)) / 1000)
   const milliseconds = Math.floor(time % 1000)
 
   useEffect(() => {
-    start === true
-      ? setTimeout(() => {
-          setTime(time - 10)
-        }, 10)
-      : ""
-  }, [time, start])
+    if (minutes === 0 && seconds === 0 && milliseconds === 0) {
+    } else {
+      props.start === true
+        ? setTimeout(() => {
+            setTime(time - 10)
+          }, 10)
+        : ""
+    }
+  }, [time, props.start, minutes, seconds, milliseconds])
 
   return (
     <div className={styles.container}>
