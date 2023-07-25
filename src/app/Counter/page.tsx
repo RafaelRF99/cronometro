@@ -24,7 +24,9 @@ export default function Counter() {
         <Display start={start} setTime={setTime} time={time} />
       </div>
       <div className={styles.btn}>
-        <button onClick={() => handleChange()}>Iniciar</button>
+        <button onClick={() => handleChange()}>
+          {start ? "Pausar" : "Iniciar"}
+        </button>
         <button onClick={() => reset()}>Reiniciar</button>
       </div>
     </div>
