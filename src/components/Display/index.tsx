@@ -16,8 +16,6 @@ export default function Display({ start, setTime, time }: DisplayProps) {
   const seconds = Math.floor((time % (60 * 1000)) / 1000)
   const milliseconds = Math.floor((time % 1000) / 10)
 
-  console.log(milliseconds)
-
   useEffect(() => {
     start === true
       ? setTimeout(() => {
